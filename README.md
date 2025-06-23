@@ -1,3 +1,4 @@
 ENumerador de usuarios utilizando request.
 
-altere para sua url, use -w para passar sua wordlist e aguardar.
+Altere para sua url, use -w par sua wordlist e aguarde.
+Otimos para CTF
